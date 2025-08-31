@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test-Stop Settling for "Almost" | Inspire and Motivate Coaching</title>
-    <meta name="description" content="Transform from stuck and unfulfilled to confident and purposeful. ICF-certified life coach helping athletes and professionals break through barriers.">
+    <title>Stop Settling for "Almost" | Inspire and Motivate Coaching</title>
+    <meta name="description" content="Transform from stuck and unfulfilled to confident and purposeful. ICF Associate Certified Coach helping athletes and professionals break through barriers.">
     
     <!-- Open Graph -->
     <meta property="og:title" content="Stop Settling for 'Almost' | Life Coaching">
@@ -27,6 +27,7 @@
             --error: #EF4444;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --section-padding: 80px;
         }
 
         * {
@@ -93,6 +94,15 @@
             color: var(--primary);
         }
 
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
         /* EMPATHY SECTION - Hero */
         .hero {
             background: linear-gradient(135deg, rgba(13, 27, 42, 0.95), rgba(26, 58, 109, 0.9)), 
@@ -100,7 +110,7 @@
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 120px 20px 80px;
+            padding: 120px 20px 60px;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -151,6 +161,18 @@
             margin-bottom: 25px;
             line-height: 1.1;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInUp 1s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero-subtitle {
@@ -158,6 +180,7 @@
             margin-bottom: 35px;
             color: #CBD5E0;
             font-weight: 300;
+            animation: slideInUp 1s ease-out 0.3s both;
         }
 
         .empathy-points {
@@ -167,6 +190,7 @@
             border-radius: 15px;
             margin-bottom: 40px;
             text-align: left;
+            animation: slideInUp 1s ease-out 0.6s both;
         }
 
         .empathy-points h3 {
@@ -189,7 +213,6 @@
         }
 
         .pain-icon {
-            color: #FCA5A5;
             margin-top: 2px;
             flex-shrink: 0;
         }
@@ -209,6 +232,7 @@
             box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
+            animation: slideInUp 1s ease-out 0.9s both;
         }
 
         .cta-button::before {
@@ -231,10 +255,65 @@
             box-shadow: 0 8px 30px rgba(233, 160, 54, 0.4);
         }
 
-        /* AUTHORITY SECTION */
-        .authority-section {
-            background: var(--light);
-            padding: 80px 20px;
+        /* NEW: Scroll Down Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 3;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .scroll-indicator:hover {
+            opacity: 0.8;
+        }
+
+        .scroll-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .scroll-arrow {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bounce 2s infinite;
+            background: rgba(233, 160, 54, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        .scroll-arrow::after {
+            content: '↓';
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        @keyframes bounce {
+            0%, 100% { 
+                transform: translateY(0);
+                box-shadow: 0 0 0 0 rgba(233, 160, 54, 0.4);
+            }
+            50% { 
+                transform: translateY(8px);
+                box-shadow: 0 0 0 8px rgba(233, 160, 54, 0);
+            }
+        }
+
+        /* Common Section Styles */
+        .section {
+            padding: var(--section-padding) 20px;
         }
 
         .container {
@@ -248,6 +327,19 @@
             text-align: center;
             margin-bottom: 20px;
             color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
         }
 
         .section-subtitle {
@@ -258,6 +350,12 @@
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* UPDATED AUTHORITY: Social Proof Section */
+        .authority-section {
+            background: var(--light);
+            padding: var(--section-padding) 20px;
         }
 
         .stats-grid {
@@ -281,7 +379,7 @@
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
             color: var(--primary);
             font-family: 'Playfair Display', serif;
@@ -317,47 +415,185 @@
             margin-top: 20px;
         }
 
-        .testimonials-preview {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        /* About the Coach Section */
+        .about-section {
+            background: white;
+            padding: var(--section-padding) 20px;
         }
 
-        .testimonial-card {
-            background: white;
-            padding: 30px;
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-image-placeholder {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--dark), var(--dark-blue));
             border-radius: 15px;
-            box-shadow: var(--shadow);
-            border-left: 4px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
             transition: transform 0.3s ease;
         }
 
-        .testimonial-card:hover {
-            transform: translateY(-3px);
+        .about-image-placeholder:hover {
+            transform: scale(1.02);
         }
 
-        .testimonial-quote {
-            font-style: italic;
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .about-text p {
             margin-bottom: 20px;
-            line-height: 1.6;
         }
 
-        .testimonial-author {
-            font-weight: 600;
+        .about-highlight {
+            background: rgba(233, 160, 54, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            margin-top: 30px;
+        }
+
+        .about-highlight h4 {
             color: var(--primary);
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
         }
 
-        .testimonial-result {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-top: 10px;
+        .values-list {
+            display: grid;
+            gap: 8px;
+            margin-top: 15px;
         }
 
-        /* SOLUTION SECTION */
+        .values-list div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+
+        /* UPDATED SOLUTION: How It Works - New Layout */
         .solution-section {
             background: var(--dark);
             color: white;
-            padding: 80px 20px;
+            padding: var(--section-padding) 20px;
+        }
+
+        .transformation-visual {
+            background: rgba(233, 160, 54, 0.1);
+            padding: 50px 30px;
+            border-radius: 15px;
+            margin: 50px 0;
+        }
+
+        .journey-path {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 40px;
+            align-items: stretch;
+            position: relative;
+        }
+
+        .journey-side {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+        }
+
+        .journey-before {
+            border-left: 4px solid #FCA5A5;
+        }
+
+        .journey-after {
+            border-left: 4px solid var(--success);
+        }
+
+        .journey-side h4 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .journey-before h4 {
+            color: #FCA5A5;
+        }
+
+        .journey-after h4 {
+            color: var(--success);
+        }
+
+        .state-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .state-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            padding: 8px 0;
+        }
+
+        .journey-connector {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            min-width: 80px;
+        }
+
+        .journey-path-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #FCA5A5 0%, var(--primary) 50%, var(--success) 100%);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .journey-milestones {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .milestone {
+            background: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 0 0 6px rgba(233, 160, 54, 0.2);
+            animation: pulse 2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { box-shadow: 0 0 0 6px rgba(233, 160, 54, 0.2); }
+            to { box-shadow: 0 0 0 12px rgba(233, 160, 54, 0.1); }
         }
 
         .solution-grid {
@@ -411,70 +647,32 @@
             font-size: 1.3rem;
         }
 
-        .transformation-visual {
-            background: rgba(233, 160, 54, 0.1);
-            padding: 50px 30px;
-            border-radius: 15px;
-            margin: 50px 0;
-        }
-
-        .before-after {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .before, .after {
-            text-align: center;
-        }
-
-        .before h4 {
-            color: #FCA5A5;
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .after h4 {
-            color: var(--success);
-            margin-bottom: 20px;
-            font-size: 1.2rem;
-        }
-
-        .arrow {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        .state-list {
-            display: grid;
-            gap: 12px;
-            text-align: left;
-        }
-
-        .state-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.95rem;
-        }
-
         /* Process Section */
         .process-section {
             background: var(--light);
-            padding: 80px 20px;
+            padding: var(--section-padding) 20px;
         }
 
         .process-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            gap: 40px;
             margin-top: 50px;
+            position: relative;
         }
 
         .process-step {
             text-align: center;
             position: relative;
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .process-step:hover {
+            transform: translateY(-5px);
         }
 
         .step-number {
@@ -489,12 +687,202 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin: 0 auto 20px;
+            box-shadow: var(--shadow);
         }
 
         .step-title {
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        /* What's Included Section */
+        .included-section {
+            background: white;
+            padding: var(--section-padding) 20px;
+        }
+
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .included-card {
+            background: var(--dark);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--primary);
+        }
+
+        .included-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .included-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* UPDATED Target Audience Section */
+        .audience-section {
+            background: var(--dark);
+            color: white;
+            padding: var(--section-padding) 20px;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .audience-column {
+            background: rgba(233, 160, 54, 0.1);
+            padding: 40px 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .for-you {
+            border-top: 4px solid var(--success);
+        }
+
+        .not-for-you {
+            border-top: 4px solid #FCA5A5;
+        }
+
+        .audience-column h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.4rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .for-you h3 {
+            color: var(--success);
+        }
+
+        .not-for-you h3 {
+            color: #FCA5A5;
+        }
+
+        .audience-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .audience-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1rem;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .audience-item:hover {
+            transform: translateX(5px);
+        }
+
+        .check-icon {
+            color: var(--success);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .cross-icon {
+            color: #FCA5A5;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: var(--light);
+            padding: var(--section-padding) 20px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .testimonial-result {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        /* Vision Section */
+        .vision-section {
+            background: white;
+            padding: var(--section-padding) 20px;
+        }
+
+        .vision-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            gap: 25px;
+            font-size: 1.1rem;
+            margin-top: 50px;
+        }
+
+        .vision-item {
+            background: rgba(233, 160, 54, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .vision-item:hover {
+            transform: scale(1.02);
         }
 
         /* Urgency Section */
@@ -505,31 +893,21 @@
             text-align: center;
         }
 
-        .urgency-box {
-            background: rgba(239, 68, 68, 0.1);
-            border: 2px solid rgba(239, 68, 68, 0.3);
+        .capacity-statement {
+            background: rgba(233, 160, 54, 0.1);
+            border: 2px solid rgba(233, 160, 54, 0.3);
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 30px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-
-        .scarcity-text {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.6;
         }
 
         /* Final CTA */
         .final-cta {
             background: var(--primary);
             color: white;
-            padding: 80px 20px;
+            padding: var(--section-padding) 20px;
             text-align: center;
         }
 
@@ -541,37 +919,97 @@
 
         .guarantee {
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
             margin: 30px 0;
             font-size: 0.95rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        /* Footer */
+        /* UPDATED Footer */
         .footer {
             background: var(--dark);
             color: var(--light);
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
+        }
+
+        .footer .logo {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .footer-tagline {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            opacity: 0.9;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        .footer-copyright {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            opacity: 0.7;
         }
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
             .nav-links {
                 display: none;
             }
 
-            .before-after {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .mobile-menu {
+                display: block;
             }
 
-            .arrow {
-                transform: rotate(90deg);
+            .hero {
+                padding: 140px 20px 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .journey-path {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .journey-connector {
+                order: 2;
+                min-height: 60px;
+            }
+
+            .journey-path-line {
+                width: 100%;
+                height: 2px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: linear-gradient(90deg, #FCA5A5 0%, var(--primary) 50%, var(--success) 100%);
+            }
+
+            .journey-milestones {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+
+            .audience-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
             }
 
             .section-title {
@@ -580,6 +1018,26 @@
 
             .final-cta h2 {
                 font-size: 2.2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .solution-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .scroll-indicator {
+                bottom: 20px;
+            }
+
+            .scroll-text {
+                font-size: 0.8rem;
             }
         }
 
@@ -596,7 +1054,6 @@
             border: 0;
         }
 
-        /* Focus states */
         .cta-button:focus,
         .nav-links a:focus {
             outline: 2px solid var(--primary);
@@ -610,10 +1067,13 @@
         <div class="nav-container">
             <a href="#" class="logo">Inspire & Motivate</a>
             <ul class="nav-links">
+                <li><a href="#about">About</a></li>
                 <li><a href="#authority">Proof</a></li>
                 <li><a href="#solution">How It Works</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#cta">Get Started</a></li>
             </ul>
+            <button class="mobile-menu" aria-label="Open mobile menu">☰</button>
         </div>
     </nav>
 
@@ -630,23 +1090,23 @@
                 <h3>Does this sound familiar?</h3>
                 <div class="pain-list">
                     <div class="pain-item">
-                        <span class="pain-icon">😔</span>
+                        <span class="pain-icon">🌫️</span>
                         <span>You feel stuck despite having "all the tools" for success</span>
                     </div>
                     <div class="pain-item">
-                        <span class="pain-icon">🔄</span>
+                        <span class="pain-icon">🌊</span>
                         <span>You start strong but lose momentum when it gets challenging</span>
                     </div>
                     <div class="pain-item">
-                        <span class="pain-icon">😰</span>
+                        <span class="pain-icon">⛰️</span>
                         <span>Fear of failure (or success) paralyzes your decision-making</span>
                     </div>
                     <div class="pain-item">
-                        <span class="pain-icon">💭</span>
+                        <span class="pain-icon">🎭</span>
                         <span>You know what you should do, but can't seem to do it consistently</span>
                     </div>
                     <div class="pain-item">
-                        <span class="pain-icon">⏰</span>
+                        <span class="pain-icon">🌅</span>
                         <span>Time is passing and you're worried you're falling behind</span>
                     </div>
                 </div>
@@ -655,116 +1115,143 @@
             <a href="#cta" class="cta-button">I'm Ready to Break Through</a>
             <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">Free discovery call • No pressure • Just clarity</p>
         </div>
+        
+        <!-- NEW: Scroll Down Indicator -->
+        <div class="scroll-indicator" onclick="document.querySelector('.authority-section').scrollIntoView({behavior: 'smooth'})">
+            <div class="scroll-text">Discover more</div>
+            <div class="scroll-arrow"></div>
+        </div>
     </section>
 
-    <!-- AUTHORITY: Proof Section -->
+    <!-- UPDATED AUTHORITY: Social Proof Section -->
     <section class="authority-section" id="authority">
         <div class="container">
-            <h2 class="section-title">Why 50+ People Trust Me With Their Breakthrough</h2>
+            <h2 class="section-title">Real Conversations, Real Breakthroughs</h2>
             <p class="section-subtitle">I'm not just another coach—I'm someone who understands the struggle and has the proven system to help you overcome it.</p>
             
-            <!-- Stats -->
+            <!-- Updated Stats -->
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Clients Transformed</div>
+                    <div class="stat-number">Weekly</div>
+                    <div class="stat-label">Clients Finding Clarity</div>
                 </div>
                 <div class="stat-card">
                     <div class="stat-number">8+</div>
                     <div class="stat-label">Years Coaching</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">95%</div>
-                    <div class="stat-label">Success Rate</div>
+                    <div class="stat-number">Real</div>
+                    <div class="stat-label">Action & Results</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">ICF</div>
-                    <div class="stat-label">Certified Coach</div>
+                    <div class="stat-number">ACC</div>
+                    <div class="stat-label">ICF Certified</div>
                 </div>
             </div>
 
-            <!-- Credentials -->
+            <!-- Updated Credentials -->
             <div class="credentials">
                 <h3>Professional Credentials & Experience</h3>
                 <div class="cred-list">
-                    <div>✓ ICF Certified Life Coach (ACC)</div>
+                    <div>✓ ICF Associate Certified Coach (ACC)</div>
                     <div>✓ 8+ Years High School Basketball Coach</div>
                     <div>✓ Specialized in Athletic Performance Mindset</div>
                     <div>✓ Values-Based Coaching Methodology</div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Testimonials Preview -->
-            <div class="testimonials-preview">
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"I went from feeling completely lost to having clear direction and taking action every single day. The change in my confidence is remarkable."</p>
-                    <p class="testimonial-author">— Tasha, Marketing Manager</p>
-                    <p class="testimonial-result">Result: Got promoted within 6 months</p>
+    <!-- About the Coach Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">Why I Do This Work</h2>
+            <div class="about-content">
+                <div class="about-image-placeholder">
+                    <div>Robert Walker</div>
+                    <div style="font-size: 1rem; opacity: 0.8; margin-top: 5px;">Life Coach</div>
                 </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Coach Robert helped me break through mental barriers that were affecting both my game and my life. I'm more focused and confident than ever."</p>
-                    <p class="testimonial-author">— Jordan, Student-Athlete</p>
-                    <p class="testimonial-result">Result: Earned college scholarship</p>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Finally understanding my values and strengths changed everything. I stopped second-guessing myself and started believing in my vision again."</p>
-                    <p class="testimonial-author">— Derrick, Entrepreneur</p>
-                    <p class="testimonial-result">Result: Launched successful business</p>
+                <div class="about-text">
+                    <!-- EMPATHY -->
+                    <p><strong>In 2020, I found myself looking successful from the outside</strong>—career on track, everything seemingly in place—but something felt fundamentally missing. I was living someone else's definition of success instead of my own.</p>
+                    
+                    <!-- AUTHORITY -->
+                    <p>That moment of honest self-reflection sparked my journey into coaching. Today, as an ICF Associate Certified Coach (ACC) with over 8 years of experience coaching high school athletes, I understand both the technical and emotional sides of breakthrough.</p>
+                    
+                    <!-- SOLUTION -->
+                    <p>My approach isn't about giving you answers—it's about helping you discover the clarity, strength, and direction that's already within you. Because when you align with your authentic values and natural strengths, action becomes inevitable.</p>
+                    
+                    <div class="about-highlight">
+                        <h4>My Core Values</h4>
+                        <div class="values-list">
+                            <div><span style="color: var(--primary);">🤝</span> <strong>Authenticity:</strong> Be genuine in every interaction</div>
+                            <div><span style="color: var(--primary);">🛡️</span> <strong>Integrity:</strong> Honor commitments to yourself and others</div>
+                            <div><span style="color: var(--primary);">🦁</span> <strong>Courage:</strong> Face challenges with confidence</div>
+                            <div><span style="color: var(--primary);">💙</span> <strong>Empathy:</strong> Understand and connect deeply</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SOLUTION: How It Works -->
+    <!-- UPDATED SOLUTION: How It Works -->
     <section class="solution-section" id="solution">
         <div class="container">
             <h2 class="section-title" style="color: white;">The Breakthrough System That Actually Works</h2>
             <p class="section-subtitle" style="color: #CBD5E0;">Instead of generic advice, you get a personalized system that addresses YOUR specific blocks and builds on YOUR unique strengths.</p>
 
-            <!-- Transformation Visual -->
+            <!-- Updated Transformation Visual -->
             <div class="transformation-visual">
-                <div class="before-after">
-                    <div class="before">
+                <div class="journey-path">
+                    <div class="journey-side journey-before">
                         <h4>Where You Are Now</h4>
                         <div class="state-list">
                             <div class="state-item">
-                                <span style="color: #FCA5A5;">😕</span>
+                                <span style="color: #FCA5A5;">🌫️</span>
                                 <span>Stuck in analysis paralysis</span>
                             </div>
                             <div class="state-item">
-                                <span style="color: #FCA5A5;">🔄</span>
+                                <span style="color: #FCA5A5;">🌊</span>
                                 <span>Starting and stopping repeatedly</span>
                             </div>
                             <div class="state-item">
-                                <span style="color: #FCA5A5;">😰</span>
+                                <span style="color: #FCA5A5;">⛰️</span>
                                 <span>Doubting your abilities</span>
                             </div>
                             <div class="state-item">
-                                <span style="color: #FCA5A5;">😔</span>
+                                <span style="color: #FCA5A5;">🎭</span>
                                 <span>Feeling behind in life</span>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="arrow">→</div>
+                    <div class="journey-connector">
+                        <div class="journey-path-line"></div>
+                        <div class="journey-milestones">
+                            <div class="milestone">🔍</div>
+                            <div class="milestone">🛤️</div>
+                            <div class="milestone">🚀</div>
+                        </div>
+                    </div>
                     
-                    <div class="after">
+                    <div class="journey-side journey-after">
                         <h4>Where You'll Be</h4>
                         <div class="state-list">
                             <div class="state-item">
-                                <span style="color: var(--success);">✨</span>
+                                <span style="color: var(--success);">🧭</span>
                                 <span>Clear on your direction</span>
                             </div>
                             <div class="state-item">
-                                <span style="color: var(--success);">🎯</span>
+                                <span style="color: var(--success);">🌱</span>
                                 <span>Taking consistent action</span>
                             </div>
                             <div class="state-item">
-                                <span style="color: var(--success);">💪</span>
+                                <span style="color: var(--success);">🔓</span>
                                 <span>Confident in your abilities</span>
                             </div>
                             <div class="state-item">
-                                <span style="color: var(--success);">🚀</span>
+                                <span style="color: var(--success);">🦋</span>
                                 <span>Making real progress</span>
                             </div>
                         </div>
@@ -775,17 +1262,17 @@
             <!-- Solution Cards -->
             <div class="solution-grid">
                 <div class="solution-card">
-                    <div class="solution-icon">🧠</div>
+                    <div class="solution-icon">🦋</div>
                     <h3>Mindset Breakthrough</h3>
                     <p>Identify and eliminate the limiting beliefs that keep you stuck. Replace fear-based thinking with confidence-based action.</p>
                 </div>
                 <div class="solution-card">
-                    <div class="solution-icon">🎯</div>
+                    <div class="solution-icon">🧭</div>
                     <h3>Values-Based Clarity</h3>
                     <p>Discover your core values and natural strengths so every decision feels aligned and authentic to who you are.</p>
                 </div>
                 <div class="solution-card">
-                    <div class="solution-icon">📈</div>
+                    <div class="solution-icon">🌱</div>
                     <h3>Action System</h3>
                     <p>Build a personalized accountability system that turns your insights into consistent daily progress.</p>
                 </div>
@@ -797,23 +1284,153 @@
     <section class="process-section">
         <div class="container">
             <h2 class="section-title">How We'll Work Together</h2>
-            <p class="section-subtitle">A proven 3-step process that's helped 50+ people break through their barriers</p>
+            <p class="section-subtitle">A proven 3-step process that's helped people break through their barriers</p>
             
             <div class="process-steps">
                 <div class="process-step">
                     <div class="step-number">1</div>
-                    <h3 class="step-title">Discover & Assess</h3>
+                    <h3 class="step-title">🔍 Discover & Assess</h3>
                     <p>We identify your core values, natural strengths, and the specific beliefs holding you back.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">2</div>
-                    <h3 class="step-title">Design & Plan</h3>
+                    <h3 class="step-title">🛤️ Design & Plan</h3>
                     <p>Create a personalized roadmap with specific actions aligned to your values and goals.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-number">3</div>
-                    <h3 class="step-title">Do & Refine</h3>
+                    <h3 class="step-title">🚀 Do & Refine</h3>
                     <p>Take consistent action with ongoing support and adjustments to keep you moving forward.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included Section -->
+    <section class="included-section">
+        <div class="container">
+            <h2 class="section-title">What's Included in Coaching</h2>
+            <p class="section-subtitle">Everything you need to move from stuck to unstoppable</p>
+            
+            <div class="included-grid">
+                <div class="included-card">
+                    <h3>💎 1-on-1 Coaching Sessions</h3>
+                    <p>Virtual sessions tailored to your specific goals and challenges, designed to unlock insights and breakthrough moments.</p>
+                </div>
+                <div class="included-card">
+                    <h3>🗝️ Self-Reflection Tools</h3>
+                    <p>Custom worksheets and exercises to help you connect the dots between where you are and where you want to be.</p>
+                </div>
+                <div class="included-card">
+                    <h3>🛤️ Results-Based Approach</h3>
+                    <p>Personalized growth plan focused on closing gaps and reaching goals that matter to you.</p>
+                </div>
+                <div class="included-card">
+                    <h3>🤝 Ongoing Support</h3>
+                    <p>Encouragement and accountability between sessions to keep you moving forward.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UPDATED Target Audience Section -->
+    <section class="audience-section">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Is This Right for You?</h2>
+            <div class="audience-grid">
+                <!-- For You Column -->
+                <div class="audience-column for-you">
+                    <h3>✅ This Is for You If:</h3>
+                    <div class="audience-list">
+                        <div class="audience-item">
+                            <span class="check-icon">✓</span>
+                            <span><strong>You're a high school or college athlete</strong> seeking a competitive edge through mindset coaching</span>
+                        </div>
+                        <div class="audience-item">
+                            <span class="check-icon">✓</span>
+                            <span><strong>You're an adult (30-50)</strong> who feels unfulfilled despite success on paper</span>
+                        </div>
+                        <div class="audience-item">
+                            <span class="check-icon">✓</span>
+                            <span><strong>You're from an underserved background</strong> ready to break cycles and create new possibilities</span>
+                        </div>
+                        <div class="audience-item">
+                            <span class="check-icon">✓</span>
+                            <span><strong>You have a dream in your heart</strong> but fear or uncertainty is holding you back</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Not For You Column -->
+                <div class="audience-column not-for-you">
+                    <h3>⚠️ This Is Not for You If:</h3>
+                    <div class="audience-list">
+                        <div class="audience-item">
+                            <span class="cross-icon">✕</span>
+                            <span><strong>You're playing sports just for fun,</strong> not seeking excellence or competitive growth</span>
+                        </div>
+                        <div class="audience-item">
+                            <span class="cross-icon">✕</span>
+                            <span><strong>You feel totally fulfilled</strong> and aren't seeking more meaning or direction in life</span>
+                        </div>
+                        <div class="audience-item">
+                            <span class="cross-icon">✕</span>
+                            <span><strong>You're not currently motivated</strong> for personal growth or self-improvement</span>
+                        </div>
+                        <div class="audience-item">
+                            <span class="cross-icon">✕</span>
+                            <span><strong>You don't value personal insight</strong> or developing self-awareness</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Here's What Clients Are Saying</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Rob asked the kind of thoughtful questions that really got me thinking—but never in a pushy way. It felt like I came to the answers myself, which made the process incredibly empowering."</p>
+                    <p class="testimonial-author">— Anthony, Entrepreneur</p>
+                    <p class="testimonial-result">Launched passion project with confidence</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"This coaching gave me clarity I didn't even know I needed. I show up more focused on the court and in life."</p>
+                    <p class="testimonial-author">— Jordan, 17 | Student-Athlete</p>
+                    <p class="testimonial-result">Earned college scholarship opportunity</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The encouragement to journal and use affirmations helped me focus on what really matters. I walked away with more than strategies—I left with a mindset shift that still guides me today."</p>
+                    <p class="testimonial-author">— Tamara, Cybersecurity Professional</p>
+                    <p class="testimonial-result">Advanced to senior role within 8 months</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-section">
+        <div class="container">
+            <h2 class="section-title">Imagine If...</h2>
+            <div class="vision-list">
+                <div class="vision-item">
+                    <span style="color: var(--primary); margin-right: 10px;">🌅</span>
+                    You woke up each day with energy and clear purpose
+                </div>
+                <div class="vision-item">
+                    <span style="color: var(--primary); margin-right: 10px;">🧭</span>
+                    You finally stopped procrastinating—and started believing in yourself
+                </div>
+                <div class="vision-item">
+                    <span style="color: var(--primary); margin-right: 10px;">🤝</span>
+                    You had a personal coach helping you stay accountable to your dreams
+                </div>
+                <div class="vision-item">
+                    <span style="color: var(--primary); margin-right: 10px;">🪞</span>
+                    You looked in the mirror and saw someone powerful, confident, and proud
                 </div>
             </div>
         </div>
@@ -822,9 +1439,9 @@
     <!-- Urgency Section -->
     <section class="urgency-section">
         <div class="container">
-            <div class="urgency-box">
-                <p class="scarcity-text">⏰ <strong>Only 5 spots available for January 2025</strong></p>
-                <p>I work with a limited number of clients to ensure you get the focused attention you deserve.</p>
+            <div class="capacity-statement">
+                <p><strong>🎯 Focused Practice Approach</strong></p>
+                <p>Due to the personalized depth of this work, I maintain a focused practice with space for a select number of 1:1 clients. This ensures you receive the dedicated attention your breakthrough deserves.</p>
             </div>
             <p style="font-size: 1.1rem; margin-bottom: 30px;">Every day you wait is another day staying in the "almost" zone. Your breakthrough is waiting.</p>
         </div>
@@ -841,7 +1458,7 @@
                 In our free discovery call, you'll walk away with at least one breakthrough insight you can act on immediately—even if we don't work together.</p>
             </div>
             
-            <a href="mailto:robert@inspireandmotivatecoaching.com?subject=Free Discovery Call Request" class="cta-button" style="font-size: 1.3rem; padding: 20px 50px;">Book Your Free Discovery Call Now</a>
+            <a href="mailto:robert@inspireandmotivatecoaching.com?subject=Free%20Discovery%20Call%20Request&body=Hi%20Robert,%0A%0AI'm%20interested%20in%20booking%20a%20free%20discovery%20call.%0A%0AName:%0APhone:%0ABest%20time%20to%20call:%0A%0AWhat%20I'm%20hoping%20to%20achieve:" class="cta-button" style="font-size: 1.3rem; padding: 20px 50px;">Book Your Free Discovery Call Now</a>
             <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
                 📞 Available via Zoom or phone<br>
                 🕐 30 minutes, no cost<br>
@@ -850,12 +1467,12 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- UPDATED Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="logo" style="margin-bottom: 15px;">Inspire & Motivate Coaching</div>
-            <p>Empowering athletes and purpose-driven individuals to unlock their potential</p>
-            <p style="margin-top: 20px; font-size: 0.8rem; opacity: 0.7;">© 2025 Inspire and Motivate Coaching. All rights reserved.</p>
+            <div class="logo">Inspire & Motivate Coaching</div>
+            <p class="footer-tagline">Belief + Hope + Action = Opportunity</p>
+            <p class="footer-copyright">© 2025 Inspire and Motivate Coaching. All rights reserved.</p>
         </div>
     </footer>
 
@@ -901,19 +1518,51 @@
         }, observerOptions);
 
         // Observe elements for scroll animations
-        document.querySelectorAll('.stat-card, .testimonial-card, .solution-card, .process-step').forEach(el => {
+        document.querySelectorAll('.stat-card, .testimonial-card, .solution-card, .process-step, .included-card, .audience-item, .vision-item').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
 
-        // Analytics tracking for CTA clicks (placeholder)
+        // Analytics tracking for CTA clicks
         document.querySelectorAll('.cta-button').forEach(button => {
             button.addEventListener('click', () => {
-                // Add your analytics tracking here
-                console.log('CTA clicked:', button.textContent);
+                console.log('CTA clicked:', button.textContent.trim());
             });
+        });
+
+        // Enhanced mobile menu functionality
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            const isVisible = navLinks.style.display === 'flex';
+            
+            if (isVisible) {
+                navLinks.style.display = 'none';
+                this.textContent = '☰';
+            } else {
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'var(--dark)';
+                navLinks.style.padding = '20px';
+                navLinks.style.gap = '15px';
+                this.textContent = '✕';
+            }
+        });
+
+        // Hide scroll indicator after scrolling starts
+        window.addEventListener('scroll', () => {
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            if (window.scrollY > 100) {
+                scrollIndicator.style.opacity = '0';
+                setTimeout(() => {
+                    scrollIndicator.style.display = 'none';
+                }, 300);
+            }
         });
     </script>
 </body>
