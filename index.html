@@ -430,26 +430,18 @@
             margin: 0 auto;
         }
 
-        .about-image-placeholder {
-            width: 100%;
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--dark), var(--dark-blue));
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 600;
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-            transition: transform 0.3s ease;
-        }
+       .about-image {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+    transition: transform 0.3s ease;
+}
 
-        .about-image-placeholder:hover {
-            transform: scale(1.02);
-        }
+.about-image:hover {
+    transform: scale(1.02);
+}
 
         .about-text {
             font-size: 1.1rem;
@@ -1167,10 +1159,7 @@
         <div class="container">
             <h2 class="section-title">Why I Do This Work</h2>
             <div class="about-content">
-                <div class="about-image-placeholder">
-                    <div>Robert Walker</div>
-                    <div style="font-size: 1rem; opacity: 0.8; margin-top: 5px;">Life Coach</div>
-                </div>
+                <img src="images/robert-walker.jpg" alt="Robert Walker, Life Coach" class="about-image">
                 <div class="about-text">
                     <!-- EMPATHY -->
                     <p><strong>In 2020, I found myself looking successful from the outside</strong>—career on track, everything seemingly in place—but something felt fundamentally missing. I was living someone else's definition of success instead of my own.</p>
